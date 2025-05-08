@@ -1,6 +1,0 @@
-{
-  "codeQL.githubDatabase.download": "never",
-  "files.associations": {
-    "*.css": "tailwindcss"
-  }
-}
