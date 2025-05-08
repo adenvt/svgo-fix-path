@@ -64,3 +64,13 @@ jobs:
 
       - name: Run Test
         run: yarn coverage
+
+      - name: Build Demo
+        run: yarn build:demo
+
+      - name: Deploy Demo
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./demo/dist
