@@ -20,6 +20,7 @@
   "scripts": {
     "dev": "vite",
     "build": "unbuild",
+    "build:demo": "vite build",
     "preview": "vite preview",
     "test": "vitest",
     "coverage": "vitest run --coverage",

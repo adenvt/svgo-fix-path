@@ -4,7 +4,7 @@ import {
   pathToString,
   normalizePath,
 } from 'svg-path-commander'
-import { SAMPLE_1, SAMPLE_2 } from './sample'
+import { SAMPLE_2 } from './sample'
 
 const showDirections = document.querySelector('#showDirections') as HTMLInputElement
 const input          = document.querySelector('#input') as HTMLTextAreaElement
