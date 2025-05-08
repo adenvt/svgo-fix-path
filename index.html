@@ -7,44 +7,78 @@
   <title>Fix Path Playground</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@3.0.1/modern-normalize.min.css">
-  <link rel="stylesheet" href="/dev/main.css">
+  <link rel="stylesheet" href="/demo/main.css">
 </head>
 
-<body class="showMarkers">
-  <section class="container">
-    <h1>Correct sub path directions in compound path</h1>
-    <p><button id="fix-button">Fix directions</button></p>
+<body class="bg-white show-marker">
+  <section class="container flex flex-col max-h-screen p-4 mx-auto space-y-4">
+    <h1 class="my-8 text-4xl font-medium">
+      Svgo Fix Path Playground
+    </h1>
     <p>
-      <label>
-        <input type="checkbox" id="showDirections" checked>show directions
+      <button id="fix-button"
+        class="px-4 py-2 text-white bg-blue-500 border rounded cursor-pointer hover:bg-blue-700 active:bg-blue-600">
+        Fix directions
+      </button>
+    </p>
+    <p>
+      <label class="cursor-pointer">
+        <input class="pr-4" type="checkbox" id="showDirections" checked>
+        Show Directions
       </label>
     </p>
-    <h3>Messed up path directions - relying on SVG fill-rule:evenodd</h3>
-    <div class="grid">
-      <svg viewBox="0 0 146 125.7" id="preview">
-        <path
-          class="glyph"
-          d="">
-        </path>
-      </svg>
-      <textarea id="input">M50 0a50 50 0 110 100 50 50 0 110-100m0 30a20 20 0 110 40 20 20 0 110-40m0-10q12.42 0 21.21 8.79t8.79 21.21-8.79 21.21-21.21 8.79-21.21-8.79-8.79-21.21 8.79-21.21 21.21-8.79m-40-20a5 5 0 110 10 5 5 0 110-10m80 0a5 5 0 110 10 5 5 0 110-10m0 2.5a2.5 2.5 0 110 5 2.5 2.5 0 110-5m-45 42.5h10v10h-10zm-5-5h20v20h-20zm10-30c22.07 0 40 17.93 40 40s-17.93 40-40 40-40-17.93-40-40 17.93-40 40-40</textarea>
-      <div id="treeview"></div>
+    <div class="grid grid-cols-3 grid-rows-1 gap-4 overflow-hidden grow">
+      <div class="flex flex-col h-full overflow-auto">
+        <label for="input" class="mb-1 text-sm font-bold">
+          Path d:
+        </label>
+        <textarea id="input"
+          class="p-3 overflow-auto border border-gray-400 rounded-lg grow bg-gray-50"></textarea>
+      </div>
+      <div class="flex flex-col">
+        <label class="mb-1 text-sm font-bold">
+          Preview:
+        </label>
+        <svg width="500" height="500" viewBox="0 0 146 125.7" id="preview"
+          class="h-auto max-w-full p-2 overflow-visible border border-gray-400">
+          <defs>
+            <pattern id="pattern" width="1" height="1" patternUnits="userSpaceOnUse"
+              patternContentUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <line class="stroke-blue-200" stroke-width="1" y2="1" />
+            </pattern>
+            <marker id="marker-cw" overflow="visible" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="strokeWidth"
+              markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" class="fill-red-500" />
+            </marker>
+            <marker id="marker-ccw" overflow="visible" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="strokeWidth"
+              markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" class="fill-blue-500" />
+            </marker>
+          </defs>
+          <path id="preview-fill"></path>
+          <g id="preview-stroke" fill="transparent"></g>
+        </svg>
+      </div>
+      <div class="flex flex-col">
+        <label class="mb-1 text-sm font-bold">
+          Treeview:
+        </label>
+        <div id="treeview" class="h-full overflow-auto border border-gray-400"></div>
+      </div>
     </div>
-
-    <footer>Original Page from <a href="https://codepen.io/herrstrietzel/pen/jOoGrxO">https://codepen.io/herrstrietzel/pen/jOoGrxO</a></footer>
+    <div class="flex flex-col py-2 space-y-2 shrink-0">
+      <div class="flex items-center space-x-2">
+        <span class="block w-4 h-4 bg-red-500"></span>
+        <span>Clockwise</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="block w-4 h-4 bg-blue-500"></span>
+        <span>Counter Clockwise</span>
+      </div>
+    </div>
   </section>
 
-  <!-- markers to show commands -->
-  <svg id="svgMarkers" style="width:0; height:0; position:absolute; z-index:-1;float:left;">
-    <defs>
-      <marker id="marker" overflow="visible" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="strokeWidth"
-        markerWidth="4" markerHeight="4" orient="auto-start-reverse">
-        <polygon points="0 0 10 5 0 10" fill="red" />
-      </marker>
-    </defs>
-  </svg>
-
-  <script type="module" src="/dev/main.ts"></script>
+  <script type="module" src="/demo/main.ts"></script>
 </body>
 
 </html>
