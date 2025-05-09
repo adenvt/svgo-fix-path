@@ -84,7 +84,7 @@ export class PathTree {
 
   get dir () {
     if (this.area !== undefined)
-      return this.area <= 0 ? 'cw' : 'ccw'
+      return this.area >= 0 ? 'cw' : 'ccw'
   }
 
   addChild (target: PathTree) {
@@ -166,7 +166,7 @@ export function fixPath (d: string): string {
 
     if (node) {
       if (node.value) {
-        const pDir = node.parent?.dir ?? 'cw'
+        const pDir = node.parent?.dir ?? 'ccw'
         const dir  = node.dir
 
         if (pDir === dir)

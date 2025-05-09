@@ -8,28 +8,26 @@
 
     .path-cw {
       marker-mid: url(#marker-cw);
-      /* marker-end: url(#marker-cw); */
 
-      @apply stroke-[0.5%] stroke-red-400;
+      @apply stroke-[0.5%] stroke-blue-400;
 
 
     }
 
     .path-ccw {
       marker-mid: url(#marker-ccw);
-      /* marker-end: url(#marker-ccw); */
 
-      @apply stroke-[0.5%] stroke-blue-400;
+      @apply stroke-[0.5%] stroke-red-400;
 
     }
   }
 
   .path-cw.active {
-    @apply fill-red-500/30;
+    @apply fill-blue-500/30;
   }
 
   .path-ccw.active {
-    @apply fill-blue-500/30;
+    @apply fill-red-500/30;
   }
 
   #treeview {
@@ -47,18 +45,18 @@
       @apply font-mono text-sm;
 
       &.cw {
-        @apply text-red-500;
+        @apply text-blue-500;
 
         > span {
-          @apply border-red-500 hover:bg-red-500/10;
+          @apply border-blue-500 hover:bg-blue-500/10;
         }
       }
 
       &.ccw {
-        @apply text-blue-500;
+        @apply text-red-500;
 
         > .node {
-          @apply border-blue-500 hover:bg-blue-500/10;
+          @apply border-red-500 hover:bg-red-500/10;
         }
       }
 
