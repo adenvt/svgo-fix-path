@@ -2833,21 +2833,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-vue@npm:9.27.0":
-  version: 9.27.0
-  resolution: "eslint-plugin-vue@npm:9.27.0"
+"eslint-plugin-vue@npm:9.33.0":
+  version: 9.33.0
+  resolution: "eslint-plugin-vue@npm:9.33.0"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.4.0"
     globals: "npm:^13.24.0"
     natural-compare: "npm:^1.4.0"
     nth-check: "npm:^2.1.1"
     postcss-selector-parser: "npm:^6.0.15"
-    semver: "npm:^7.6.0"
+    semver: "npm:^7.6.3"
     vue-eslint-parser: "npm:^9.4.3"
     xml-name-validator: "npm:^4.0.0"
   peerDependencies:
     eslint: ^6.2.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
-  checksum: 10c0/a99f8f0f9363cdb931816958bee9787236774d3e1b76c49e4207fefa4d0ebd34dcc29b3fe7ceaf1e36d2c505a6a339fdce54bd1466007f32c1eb4da1814db903
+  checksum: 10c0/2f5ee967158fc345ec3f2076835e6a9d706c4bbb7dc4c3806ad8db81133d73128fbd402f71b3adf8ae53e5e4a0a1aba32e44eb757544901a6a62021a1ccad92e
   languageName: node
   linkType: hard
 
@@ -5987,7 +5987,7 @@ __metadata:
     eslint-plugin-promise: "npm:6.6.0"
     eslint-plugin-unicorn: "npm:48.0.1"
     eslint-plugin-varspacing: "npm:1.2.2"
-    eslint-plugin-vue: "npm:9.27.0"
+    eslint-plugin-vue: "npm:9.33.0"
     svg-path-commander: "npm:^2.1.10"
     svgo: "npm:^3.3.2"
     tailwindcss: "npm:^4.1.5"
