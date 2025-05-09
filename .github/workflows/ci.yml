@@ -11,6 +11,9 @@ on:
   merge_group:
     types: [checks_requested]
 
+env:
+  BASE_URL: ${{ vars.BASE_URL }}
+
 jobs:
   analyze:
     runs-on: ubuntu-latest
