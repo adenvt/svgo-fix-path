@@ -1,4 +1,8 @@
-import type { PathArray } from 'svg-path-commander'
+import type {
+  Point,
+  PathArray,
+  PathBBox,
+} from 'svg-path-commander'
 import {
   normalizePath,
   splitPath,
@@ -6,12 +10,18 @@ import {
   reversePath,
   getTotalLength,
   getPointAtLength,
+  getPathBBox,
 } from 'svg-path-commander'
 
-type Point = ReturnType<typeof getPointAtLength>
+function isInside (inner: Point[], outer: Point[], outerBBox: PathBBox) {
+  return inner.every((point) => {
+    return isPoinInBBox(point, outerBBox) && isPointInPoly(point, outer)
+  })
+}
 
-function isInside (inner: Point[], outer: Point[]) {
-  return inner.every((point) => isPointInPoly(point, outer))
+function isPoinInBBox (point: Point, bbox: PathBBox) {
+  return (point.x >= bbox.x && point.x <= bbox.x2)
+    && (point.y >= bbox.y && point.y <= bbox.y2)
 }
 
 function isPointInPoly (point: Point, polygon: Point[]) {
@@ -58,6 +68,7 @@ export class PathTree {
   protected path?: PathArray
   protected area?: number
   protected polygon?: Point[]
+  protected bbox?: PathBBox
 
   public parent?: PathTree
   public children: Set<PathTree>
@@ -71,10 +82,12 @@ export class PathTree {
     if (path) {
       const polygon = getPolygon(path)
       const area    = getArea(polygon)
+      const bbox    = getPathBBox(path)
 
       this.path    = path
       this.polygon = polygon
       this.area    = area
+      this.bbox    = bbox
     }
   }
 
@@ -125,11 +138,11 @@ export class PathTree {
   }
 
   compare (other: PathTree) {
-    if (this.polygon && other.polygon) {
-      if (isInside(other.polygon, this.polygon))
+    if (this.polygon && other.polygon && this.bbox && other.bbox) {
+      if (isInside(other.polygon, this.polygon, this.bbox))
         return 1
 
-      if (isInside(this.polygon, other.polygon))
+      if (isInside(this.polygon, other.polygon, other.bbox))
         return -1
     }
 
