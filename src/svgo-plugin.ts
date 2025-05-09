@@ -14,3 +14,20 @@ export const FixPathPlugin: CustomPlugin = {
     }
   },
 }
+
+export const RemoveClipPathPlugin: CustomPlugin = {
+  name: 'remove-clip-path',
+  fn  : () => {
+    return {
+      element: {
+        exit (node, parentNode) {
+          if (node.name === 'g' && node.attributes['clip-path']) {
+            parentNode.children = node.children.map((child) => {
+              return child
+            })
+          }
+        },
+      },
+    }
+  },
+}
