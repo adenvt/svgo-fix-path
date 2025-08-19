@@ -1,6 +1,6 @@
 {
   "name": "svgo-fix-path",
-  "packageManager": "yarn@4.9.1",
+  "packageManager": "yarn@4.9.2",
   "description": "Fix SVG path direction using SVGO",
   "version": "1.0.0",
   "type": "module",
