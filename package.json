@@ -47,7 +47,7 @@
     "eslint-plugin-promise": "7.2.1",
     "eslint-plugin-unicorn": "48.0.1",
     "eslint-plugin-varspacing": "1.2.2",
-    "eslint-plugin-vue": "9.33.0",
+    "eslint-plugin-vue": "10.6.0",
     "svgo": "^3.3.2",
     "tailwindcss": "^4.1.5",
     "typescript": "5.8.3",
